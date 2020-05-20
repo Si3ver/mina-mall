@@ -1,0 +1,6 @@
+<rich-text space="emsp" nodes="{{nodes}}" bindtap="tap"></rich-text>
+<view style="width:100%;height:30px;"></view>
+
+<parser bindimgtap="onTapImage" html="{{html}}" tag-style="{{tagStyle}}" />
+
+<view style="width:100%;height:100px;"></view>

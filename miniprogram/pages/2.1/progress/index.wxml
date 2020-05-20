@@ -1,0 +1,120 @@
+<!-- 片2 -->
+<view class="gap">片2</view>
+<icon type="success" size="30px" color="green" />
+<icon type="success" size="30" color="green" />
+<icon type="success" size="60rpx" color="green" />
+
+<!-- 片3 -->
+<view class="gap">片3</view>
+<icon type="success" size="200rpx"/>
+<icon style="background:grey;" type="success" size="200rpx"/>
+
+<!-- 片4 图文混排 -->
+<view class="gap">片4</view>
+<view style="font-size:17px;margin-top:20px;">
+  文本文本文本<icon type="success" size="14" color="success"/>文本文本文本文本文本文本文本文本文本文本<icon type="success" size="14" color="success"/>
+</view>
+
+<!-- 片7 精灵集方案 -->
+<view class="gap">片7</view>
+<icon class="sprite_icon scale2"></icon>
+
+<!-- 片8 css绘制 -->
+<view class="gap"></view>
+<view class="gap"></view>
+<view class="gap">片8</view>
+<view class="gap"></view>
+<icon class="icon-close"></icon>
+<view class="gap"></view>
+<icon class="icon-close scale2"></icon>
+
+<!-- 片9  -->
+<view class="gap"></view>
+<view class="gap"></view>
+<view class="gap">片9</view>
+<icon class="iconfont icon-sun scale5"></icon>
+
+<!-- 片10 -->
+<view class="gap"></view>
+<view class="gap">片10</view>
+<icon class="svg-icon"></icon>
+
+<!-- end -->
+
+<view class="gap"></view>
+<view class="gap"></view>
+
+
+<view class="group">
+  <block wx:for="{{iconSize}}">
+    <icon type="success" size="{{item}}px"/>
+  </block>
+</view>
+
+<view style="width:100%;height:30px;"></view>
+
+<view class="group" style="background:grey;">
+  <block wx:for="{{iconSize}}">
+    <icon type="success" size="{{item}}px"/>
+  </block>
+</view>
+
+<view class="group" style="margin-top:20px;">
+  <block wx:for="{{iconType}}">
+    <icon type="{{item}}" size="60px"/>
+  </block>
+</view>
+
+<view class="group" style="margin-top:20px;">
+  <block wx:for="{{iconColor}}">
+    <icon type="success" size="60" color="{{item}}"/>
+  </block>
+</view>
+
+<!-- 图文混排 -->
+<view style="font-size:17px;margin-top:20px;">
+  文本文本文本<icon type="success" size="14" color="success"/>文本文本文本文本文本文本文本文本文本文本<icon type="success" size="14" color="success"/>
+</view>
+
+<!-- 使用iconfont图标 -->
+<view style="font-size:17px;margin-top:20px;">
+  文本文本文本<icon class="iconfont icon-sun"></icon>文本文本文本文本文本文本文本文本文本文本<icon class="iconfont icon-sun"></icon>
+</view>
+
+<view style="width:100%;height:30px;"></view>
+
+<!-- 使用自定义的iconfont图标 -->
+<view style="font-size:17px;margin-top:20px;">
+  文本文本文本<icon class="iconfont icon-sun"></icon>文本文本文本文本文本文本文本文本文本文本<icon class="iconfont icon-moon"></icon>
+</view>
+
+<!-- 使用css3绘制图标 -->
+<view style="font-size:17px;margin-top:20px;">
+  文本文本文本<icon class="icon-close"></icon>文本文本文本文本文本文本文本文本文本文本<icon class="icon-close"></icon>
+</view>
+
+<!-- 使用变量传递图标样式 -->
+<view style="margin-top:20px;">
+  <icon class="iconfont {{iconName}}"></icon>
+</view>
+<view style="width:100%;height:30px;"></view>
+
+<!-- 进度条 -->
+<progress border-radius="5" percent="20" show-info />
+<view style="width:100%;height:30px;"></view>
+
+<!-- 红色百分比文字 -->
+<progress percent="40" stroke-width="5" show-info style="color:red"/>
+
+<progress percent="60" activeColor="pink" show-info/>
+<view style="width:100%;height:30px;"></view>
+<progress bindtap="onTapProgressBar" stroke-width="2" percent="{{percentValue}}" active-mode="forwards" active show-info="{{false}}" bindactiveend="onProgressActiveEnd"/>
+<button bindtap="onTapReloadBtn">重新加载</button>
+
+<view style="width:100%;height:30px;"></view>
+
+<!-- 环形进度条 -->
+<circle-progress id="progress1" percent="{{percentValue}}" />
+<button bindtap="drawProgress">redraw</button>
+
+<view style="width:100%;height:300px;"></view>

@@ -1,0 +1,14 @@
+/* miniprogram/pages/2.1/rich-text/index.wxss */
+.div_class{
+  color: red;
+}
+
+.img{
+  font-size:0;
+  display:block;
+}
+
+rich-text{
+  user-select:text;
+  -webkit-user-select:text
+}

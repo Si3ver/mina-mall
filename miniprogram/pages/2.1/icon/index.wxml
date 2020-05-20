@@ -1,0 +1,42 @@
+<!-- 片2 -->
+<view class="gap">片2</view>
+<icon type="success" size="30px" color="green" />
+<icon type="success" size="30" color="green" />
+<icon type="success" size="60rpx" color="green" />
+
+<!-- 片3 -->
+<view class="gap">片3</view>
+<icon type="success" size="200rpx"/>
+<icon style="background:grey;" type="success" size="200rpx"/>
+
+<!-- 片4 图文混排 -->
+<view class="gap">片4</view>
+<view style="font-size:17px;margin-top:20px;">
+  文本文本文本<icon type="success" size="14" color="success"/>文本文本文本文本文本文本文本文本文本文本<icon type="success" size="14" color="success"/>
+</view>
+
+<!-- 片7 精灵集方案 -->
+<view class="gap">片7</view>
+<icon class="sprite_icon scale2"></icon>
+
+<!-- 片8 css绘制 -->
+<view class="gap"></view>
+<view class="gap"></view>
+<view class="gap">片8</view>
+<view class="gap"></view>
+<icon class="icon-close"></icon>
+<view class="gap"></view>
+<icon class="icon-close scale2"></icon>
+
+<!-- 片9  -->
+<view class="gap"></view>
+<view class="gap"></view>
+<view class="gap">片9</view>
+<icon class="iconfont icon-sun scale5"></icon>
+
+<!-- 片10 -->
+<view class="gap"></view>
+<view class="gap">片10</view>
+<icon class="svg-icon"></icon>
+
+<!-- end -->
