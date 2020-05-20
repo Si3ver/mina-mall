@@ -50,6 +50,41 @@
 					"pathName": "pages/2.1/icon/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "text",
+					"pathName": "pages/2.1/text/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "rich-text",
+					"pathName": "pages/2.1/rich-text/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "parser",
+					"pathName": "pages/2.1/parser/parser",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "progress",
+					"pathName": "pages/2.1/progress/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "circle-progress",
+					"pathName": "pages/2.1/circle-progress/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

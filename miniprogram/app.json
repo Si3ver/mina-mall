@@ -1,6 +1,11 @@
 {
   "pages": [
     "pages/2.1/icon/index",
+    "pages/2.1/text/index",
+    "pages/2.1/rich-text/index",
+    "pages/2.1/parser/parser",
+    "pages/2.1/progress/index",
+    "pages/2.1/circle-progress/index",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
