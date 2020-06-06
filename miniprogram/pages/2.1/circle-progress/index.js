@@ -1,14 +1,14 @@
 Component({
   behaviors: [],
-properties: {
-  percent: {
-    type: Number,
-    value: 50, 
-    observer: function (newVal, oldVal) { 
-      this.draw(newVal);
-    }
+  properties: {
+    percent: {
+      type: Number,
+      value: 50,
+      observer: function (newVal, oldVal) {
+        this.draw(newVal);
+      }
+    },
   },
-},
   data: {
     percentage: '', //百分比
     animTime: '', // 动画执行时间
@@ -28,9 +28,9 @@ properties: {
     // 组件所在页面的生命周期函数
     show: function () { },
   },
-  created(){},
+  created() { },
 
-  ready(){
+  ready() {
     if (this.data.percent) this.draw(this.data.percent);
   },
 
@@ -60,7 +60,7 @@ properties: {
         return false;
       }
       that.run(start, w, h);
-      setTimeout(function() {
+      setTimeout(function () {
         that.canvasTap(start, end, time, w, h);
       }, time);
     },
@@ -69,7 +69,7 @@ properties: {
       const id = 'runCanvas'
       const animTime = 2000
       if (percent > 100) return
-      if (!this.ctx2){
+      if (!this.ctx2) {
         const ctx2 = wx.createCanvasContext(id, this)
         this.ctx2 = ctx2
       }
@@ -81,12 +81,12 @@ properties: {
       });
       var time = this.data.animTime / this.data.percentage;
 
-const query = wx.createSelectorQuery().in(this)
-query.select('#'+id).boundingClientRect((res)=>{
-  var w = parseInt(res.width / 2); 
-  var h = parseInt(res.height / 2); 
-  this.canvasTap(oldPercentValue, percent, time, w, h)
-}).exec()
+      const query = wx.createSelectorQuery().in(this)
+      query.select('#' + id).boundingClientRect((res) => {
+        var w = parseInt(res.width / 2);
+        var h = parseInt(res.height / 2);
+        this.canvasTap(oldPercentValue, percent, time, w, h)
+      }).exec()
     }
   }
 })

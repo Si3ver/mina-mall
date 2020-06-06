@@ -108,6 +108,7 @@
 
 <progress percent="60" activeColor="pink" show-info/>
 <view style="width:100%;height:30px;"></view>
+
 <progress bindtap="onTapProgressBar" stroke-width="2" percent="{{percentValue}}" active-mode="forwards" active show-info="{{false}}" bindactiveend="onProgressActiveEnd"/>
 <button bindtap="onTapReloadBtn">重新加载</button>
 
