@@ -1,0 +1,145 @@
+var address = require('./city.wxs')
+var region = {
+  provinces: []
+  , citys: []
+  , areas: []
+  , value: [-1, 0, 0] //选定的值,
+  , selectedValue: [0, 0, 0]//当前选择的值
+}
+var dataIsDirty = false
+var defaultProvinceId = address.provinces[0].id 
+region.provinces = address.provinces
+region.citys = address.citys[defaultProvinceId] //默认北京市辖区
+region.areas = address.areas[address.citys[defaultProvinceId][0].id]
+
+// 选择省与城市，触发数据变动
+function onSelectedValueChanged(ownerInstance) {
+  var selectedValue = region.selectedValue
+    , value = region.value
+  var provinceNum = selectedValue[0]
+  var cityNum = selectedValue[1]
+
+  if (value[0] !== provinceNum) {
+    var id = region.provinces[provinceNum].id
+    region.selectedValue = [provinceNum, 0, 0]
+    region.citys = address.citys[id]
+    region.areas = address.areas[address.citys[id][0].id]
+  } else if (value[1] !== cityNum) {
+    var id = region.citys[cityNum].id
+    region.selectedValue = [provinceNum, cityNum, 0]
+    region.areas = address.areas[region.citys[cityNum].id]
+  }
+
+  ownerInstance.callMethod("setData", {
+    citys: region.citys
+    , areas: region.areas
+  })
+}
+function getRegionId(value, type) {
+  var provinceId = address.provinces[value[0]].id
+  var townId = address.citys[provinceId][value[1]].id
+  var areaId = ''
+  if (address.areas[townId][value[2]].id) {
+    areaId = address.areas[townId][value[2]].id
+  } else {
+    areaId = 0
+  }
+
+  if (type === 'provinceId') {
+    return provinceId
+  } else if (type === 'townId') {
+    return townId
+  } else {
+    return areaId
+  }
+}
+
+region.onPickStart = function (e, owner) {
+  console.log(e.type, e.detail)
+}
+region.onPickEnd = function (e, owner) {
+  if (dataIsDirty) {
+    onSelectedValueChanged(owner)
+    dataIsDirty = false
+  }
+}
+region.onChange = function (e, owner) {
+  console.log(e.type, e.detail)
+  if ('' + region.selectedValue != '' + e.detail.value) {
+    dataIsDirty = true
+    region.selectedValue = e.detail.value
+  }
+}
+region.onCancel = function (e, owner) {
+  // console.log(e.type, e.detail)
+  var value = region.value 
+  var provinceId = address.provinces[value[0]].id 
+  owner.callMethod("setData",{
+    citys:address.citys[provinceId]
+    ,areas: address.areas[address.citys[provinceId][value[1]].id]
+    ,visible:false 
+  })
+}
+region.onSure = function (e, owner) {
+  // console.log(e.type, e.detail)
+  var value = region.value = region.selectedValue
+  var regionTextArr = ['','','']
+
+  // 将选择的城市信息显示到输入框
+  regionTextArr[0] = region.provinces[value[0]].name || ''
+  if (region.citys[value[1]]){
+    regionTextArr[1] = region.citys[value[1]].name || ''
+  } 
+  if (region.areas[value[2]]) {
+    regionTextArr[2] = region.areas[value[2]].name || ''
+  } else {
+    value[2] = 0
+  }
+  var regionText = regionTextArr.join('')
+
+  owner.callMethod("setData",{
+    regionText:regionText
+    ,value:value 
+    ,visible:false 
+  })
+  owner.triggerEvent("change", {
+    value: {
+      region: regionText,
+      province: {
+        id: getRegionId(region.value, 'provinceId'),
+        name: regionTextArr[0]
+      },
+      town: {
+        id: getRegionId(region.value, 'townId'),
+        name: regionTextArr[1]
+      },
+      area: {
+        id: getRegionId(region.value, 'areas'),
+        name: regionTextArr[2]
+      }
+    }
+  })
+}
+region.pickAddress = function(e, owner) {
+  owner.callMethod("setData",{
+    visible: true
+  })
+},
+// Cannot use wxs function to handle custom event "ready"
+region.onComponentReady = function (e, owner) {
+  console.log(e, "onComponentReady");
+  // onSelectedValueChanged(owner)
+}
+// ownerInstance不一定是页面对象
+region.onPropSigned = function(newValue, oldValue, ownerInstance, instance){
+  console.log("onPropSigned",newValue, oldValue, ownerInstance, instance)
+  ownerInstance.callMethod("setData", {
+    provinces: region.provinces
+    , citys: region.citys
+    , areas: region.areas
+    , value: [0, 0, 0] // 地址选择器省市区 暂存 currentIndex
+    , regionText: ''
+  })
+}
+
+module.exports = region

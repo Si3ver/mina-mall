@@ -6,11 +6,11 @@
   "dependencies": {
     "@miniprogram-component-plus/vtabs": "^1.0.0",
     "@miniprogram-component-plus/vtabs-content": "^1.0.0",
+    "blueimp-md5": "^2.16.0",
     "mina-lazy-image": "^2.0.1",
     "miniprogram-recycle-view": "^0.1.5",
     "miniprogram-slide-view": "0.0.4",
-    "wxml-to-canvas": "^1.1.1",
-    "blueimp-md5": "^2.16.0"
+    "wxml-to-canvas": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {

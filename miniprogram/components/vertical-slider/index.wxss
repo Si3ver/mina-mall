@@ -1,0 +1,66 @@
+.slider {
+  height: 100%;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.slider-container {
+  flex: 1;
+  margin: 0 20px;
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.slider-upper {
+  flex-shrink: 0;
+  height: 100%;
+}
+/* 
+flex-shrink这个样式是决定flex元素的收缩规则的
+并且，它不是决定元素的所占宽度比，而是决定了不足的空间，各个元素各分摊多少的缩小额度
+*/
+.slider-lower {
+  flex-shrink: 0;
+  height: auto;
+  flex:1;
+}
+.slider-upper-line {
+  height: 100%;
+  margin: 0 12px;
+  width: 2px;
+}
+.slider-lower-line {
+  height: 100%;
+  margin: 0 12px;
+  width: 2px;
+}
+.slider-middle {
+  flex-shrink: 1;
+  width: 0;
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider-block {
+  flex-shrink: 0;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+.slider-value {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.slider-append {
+  flex-shrink: 0;
+  height: 10px;
+  padding: 0 20px;
+}
+

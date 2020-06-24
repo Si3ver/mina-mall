@@ -4,10 +4,27 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"enhance": true
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxcbdde696be506d59",
 	"projectname": "mina-demo",
@@ -85,16 +102,74 @@
 					"pathName": "pages/2.1/circle-progress/index",
 					"query": "",
 					"scene": null
-				},{
+				},
+				{
 					"id": 7,
 					"name": "view",
 					"pathName": "pages/2.2/view/index",
 					"query": "",
 					"scene": null
-				},{
+				},
+				{
 					"id": 8,
-					"name": "scroll-view",
+					"name": "movable-view",
 					"pathName": "pages/2.4_2.5/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "movable-view & 左滑删除",
+					"pathName": "pages/2.6_2.7/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "scroll-view",
+					"pathName": "pages/2.8_2.9/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "滚动选择器",
+					"pathName": "pages/2.10/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "滑动选择器",
+					"pathName": "pages/2.12/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "页面链接组件",
+					"pathName": "pages/2.13/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "image媒体组件",
+					"pathName": "pages/2.14/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "x",
+					"pathName": "pages/2.16/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "x",
+					"pathName": "pages/2.18/index",
 					"query": "",
 					"scene": null
 				}

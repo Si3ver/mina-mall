@@ -1,0 +1,172 @@
+var notInt = function(num) {
+  return num !== parseInt(num)
+}
+/*
+ * state:共享临时数据对象
+ * state.max:最大值
+ * state.min:最小值
+ * state.offset:当前高度，即value - min的值（未按照step纠正的值）
+ * state.step:步长
+ * ins:页面或组件实例
+ */
+// 这个函数主要是为了计算，当value变化时，计算出上、下两部分灰、绿色各占百分多少
+// 然后通过组件描述对象设置样式
+// 这个方法会在第一次属性设置中、调用
+var calculate = function(instance,state,changeCallback){
+  var max = state.max
+  var min = state.min
+  var offset = state.offset
+  var step = state.step
+  // 1、计算 offset 按照 step 算应该是几个。
+  // Math.round函数，是大于等于0.5算一步，否则不算
+  // Math.round(offset % step / step) 计算的是 offset 对 step 取模后剩下的长度四舍五入，就是多出来的部分是否该算一步
+  // 
+  // Math.floor(offset / step) 计算的是 offset 中包含多少个完整的 step
+  var stepNum = Math.round(offset % step / step) + Math.floor(offset / step)
+  // 2、纠正后的当前高度
+  // 当前的步值数
+  var current = stepNum * step
+
+  // 3、当前高度所占比例，由于 offset 的大小已经在进方法前经过了修正，所以这里不需要再判断是否小于0或者大于100了
+  // 算出百分比
+  var percent = current * 100 / (max - min)
+  // var percent = (current * 100 / (max - min)).toFixed(2)
+
+  // 设置上灰色是多少高度，百分比
+  // value是从底部开始计算的，所以这里是100-percent
+  instance.selectComponent("#upper").setStyle({
+    height: (100 - percent) + "%"
+  })
+  // 设置选中的绿色部分百分比
+  // instance.selectComponent("#lower").setStyle({
+  //   height: percent + "%"
+  // })
+  // 如果值有变化，调用回调函数
+  if(state.current !== current){
+    state.current = current
+    changeCallback(current+min)
+  }
+}
+
+module.exports = {
+  // 这是由wxsPropObserver机制调用的
+propsChange: function(newValue, oldValue, ownerIns, ins) {
+  var state = ownerIns.getState()
+  var step = newValue.step;
+  var min = newValue.min;
+  var max = newValue.max;
+  // value是设置的当前值
+  var value = newValue.value;
+  if (notInt(step) || notInt(min) || notInt(max) || notInt(value)) {
+    console.log("你不把 step min max value 设成正整数，我没法做啊")
+    return
+  }
+  if (min > max) {
+    min = oldValue.min
+    max = oldValue.max
+  }
+  if (value > max) {
+    console.log("value的值比max大，将value强制设为max")
+    value = max
+  } else if (value < min) {
+    console.log("value的值比min小，将value强制设为min："+min)
+    value = min
+  }
+  if (step <= 0 || (max - min) % step != 0) {
+    console.log("step只能是正整数且必须被(max-min)整除，否则将step强制设为1")
+    step = 1
+  }
+  state.min = min
+  state.max = max
+  state.step = step
+  state.offset = value - min
+  state.disabled = newValue.disabled
+  state.totalTop = newValue.totalTop
+  state.totalHeight = newValue.totalHeight
+  if (newValue.totalTop !== null && newValue.totalHeight !== null) {
+    calculate(ownerIns, state, function(currentValue){
+      ownerIns.callMethod("setCurrent", state.current + state.min)
+    })
+  }
+},
+  // 这是由顶点、底点单击时调用的
+  // 直接在最大、最小值之间切换
+  // 因为在组件上设置了dataset属性，所以可以用一种函数
+  // 
+tapEndPoint: function(e, ins){
+  var state = ins.getState()
+  if (state.disabled) return
+  var percent = e.currentTarget.dataset.percent
+  state.offset = (state.max - state.min) * percent
+  calculate(ins, state, function (currentValue) {
+    ins.triggerEvent("change", {
+      value: currentValue
+    })
+    ins.callMethod("setCurrent", currentValue)
+  })
+},
+  // 单击upper、lower两处或灰色、或绿色，都是调用这个函数
+  tap: function(e, ins) {
+    var state = ins.getState()
+    if (state.disabled) return
+    // （总高度+头部高度-点击点高度）/ 总高度 = 点击点在组件的位置
+    // 点击事件只在线条上，所以percent是不可能小于0，也不可能超过100%，无需另加判断
+    // 计算从滑块底部，到音击点之间的距离，再除为总高度，计算出百分比
+    var percent = (state.totalTop + state.totalHeight - e.changedTouches[0].pageY) / state.totalHeight
+    // 依据百分比，计算出偏移量数量，这个数量与上面计算出来的从滑块底部到音击点之间的距离，并不一定一致，因为单位是由调用者定义的
+    state.offset = (state.max - state.min) * percent
+    // 最后调用计算函数，完成后派发事件，设置逻辑层的当前值
+    calculate(ins, state, function(currentValue){
+      ins.callMethod("setCurrent", currentValue)
+      ins.triggerEvent("change", {
+        value: currentValue
+      })
+    })
+  },
+  // 滑块开始滑动时，记录当前坐标，及当前的current值
+  // 由于单击点，与当前滑块的高度，只能作一个绑定，并不能完全等同，因为每次单击的点并不太一样
+start: function(e, ins) {
+  var state = ins.getState()
+  if (state.disabled) return
+  state.startPoint = e.changedTouches[0]
+  // 本次滑动之前的高度px = 当前高度value / (最大值-最小值) * 最大高度
+  var currentPx = state.current / (state.max - state.min) * state.totalHeight
+  state.currentPx = currentPx
+},
+// 滑块开始移动了
+// getState是获取模块变量对象，可以在模块内共享利用，因为没有this，模块内并不方便在各个方法之间共享变量
+move: function(e, ins) {
+
+  var state = ins.getState()
+  if (state.disabled) return
+  // 
+  var startPoint = state.startPoint
+  var endPoint = e.changedTouches[0]
+  console.log('endPoint',JSON.stringify(endPoint));
+  
+  // 当前的高度px = 滑动之前的高度px + 起始点高度 - 当前点高度
+  // 依据移动点，计算出偏移之后的当前值是多少
+  var currentPx = state.currentPx + startPoint.pageY - endPoint.pageY
+  // 计算出百分比
+  var percent = currentPx / state.totalHeight
+  // 由于可能滑出slider范围，所以要限制比例在 0-1之间
+  // 有可能会移动范围之处，值可能会超过0~1的范围
+  percent = percent>1?1:percent
+  percent = percent<0?0:percent
+  state.offset = (state.max - state.min) * percent
+  calculate(ins, state, function(currentValue){
+    ins.triggerEvent("changing", {
+      value: currentValue
+    })
+    ins.callMethod("setCurrent", currentValue)
+  })
+},
+// 滑块结束
+end: function(e, ins) {
+  var state = ins.getState()
+  if (state.disabled) return
+  ins.triggerEvent("change", {
+    value: state.current + state.min
+  })
+}
+}

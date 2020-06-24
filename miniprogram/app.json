@@ -8,6 +8,14 @@
     "pages/2.1/circle-progress/index",
     "pages/2.2/view/index",
     "pages/2.4_2.5/index",
+    "pages/2.6_2.7/index",
+    "pages/2.8_2.9/index",
+    "pages/2.10/index",
+    "pages/2.12/index",
+    "pages/2.13/index",
+    "pages/2.14/index",
+    "pages/2.16/index",
+    "pages/2.18/index",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -30,5 +38,9 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
 }

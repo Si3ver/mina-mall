@@ -1,0 +1,26 @@
+<wxs module="eventHandle" src="./index.wxs"></wxs>
+<view class="slider" catchtouchmove="empty">
+	<!-- 直接切换到最大值，tapTop -->
+	<view class="slider-append" data-percent="1" bindtap="{{eventHandle.tapEndPoint}}"></view>
+
+	<!-- 通过prop向wxs传递默认数据 -->
+	<view class="slider-container" change:prop="{{eventHandle.propsChange}}" prop="{{ {max,min,step,value,totalTop,totalHeight,disabled} }}">
+		<view class="slider-upper" id="upper" catchtap="{{eventHandle.tap}}">
+			<view class="slider-upper-line" style="background-color: {{backgroundColor}}"></view>
+		</view>
+
+		<view class="slider-middle">
+			<view class="slider-block" style="background-color:{{blockColor}};box-shadow:{{blockColor=='#ffffff'?'0 0 2px 2px rgba(0,0,0,0.2)':'none'}};width:{{blockSize}}px;height:{{blockSize}}px" catchtouchstart="{{eventHandle.start}}" catchtouchmove="{{eventHandle.move}}" catchtouchend="{{eventHandle.end}}"></view>
+		</view>
+		
+		<view class="slider-lower" id="lower" catchtap="{{eventHandle.tap}}">
+			<view class="slider-lower-line" style="background-color: {{activeColor}}"></view>
+		</view>
+	</view>
+
+	<!-- 直接切换到最小值，tapEnd，data-percent=0, 是dataset数据属性 -->
+	<view class="slider-append" data-percent="0" bindtap="{{eventHandle.tapEndPoint}}"></view>
+
+	<view class="slider-value" wx:if="{{showValue}}">{{currentValue}}</view>
+</view>
+

@@ -1,0 +1,26 @@
+<!--components/region-picker-view/index.wxml-->
+<view class="address-item" bindtap="pickAddress">
+  <view class="item-title">所在地区:</view>
+  <view class="item-content arrow {{region ? '' : 'item-content_shadow'  }}">{{region||"请选择"}}</view>
+</view>
+<pop-up visible="{{visible}}" onClose="closePopUp">
+  <view slot="content">
+    <view class="picker-view">
+      <view class="picker-view__pane">
+        <text catchtap="cityCancel">取消</text>
+        <text catchtap="citySure">确定</text>
+      </view>
+<picker-view class="pick-view__group" bindchange="cityChange" value="{{value}}" wx:key="*this">
+  <picker-view-column indicator-class="item_active">
+    <view wx:for="{{provinces}}" class="picker-item" wx:key="index">{{item.name}}</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view wx:for="{{citys}}" class="picker-item" wx:key="index">{{item.name}}</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view wx:for="{{areas}}" class="picker-item" wx:key="index">{{item.name}}</view>
+  </picker-view-column>
+</picker-view>
+    </view>
+  </view>
+</pop-up>
