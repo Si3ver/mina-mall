@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "slider-vertical": "../../components/vertical-slider/index"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "自定义导航标题"
+}

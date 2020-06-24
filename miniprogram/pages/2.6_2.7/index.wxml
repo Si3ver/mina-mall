@@ -1,0 +1,133 @@
+<!-- 2.6 一 -->
+<!-- 片4 三种拖拽情况 -->
+<!-- 1 movable-view = movable-area -->
+<view class="page-section">
+	<view class="page-section-title">movable-view = movable-area</view>
+	<movable-area>
+		<movable-view style="width:400rpx;height:400rpx;" direction="all">text</movable-view>
+	</movable-area>
+</view>
+
+<!-- 2 movable-view < movable-area -->
+<view class="page-section">
+	<view class="page-section-title">movable-view 《 movable-area</view>
+	<movable-area>
+		<movable-view direction="all">text</movable-view>
+	</movable-area>
+</view>
+
+<!-- 片5 3 movable-view > movable-area -->
+<view class="page-section">
+	<view class="page-section-title">movable-view 》 movable-area</view>
+	<movable-area style="width:500rpx;height:500rpx;">
+		<movable-view class="max" direction="all">text</movable-view>
+	</movable-area>
+</view>
+
+<!-- 片6、7 实现动画 -->
+<view class="page-section">
+	<view class="page-section-title">实现动画</view>
+
+	<movable-area>
+		<movable-view inertia damping="80" friction="1" bindchange="onMovableViewChange" animation x="{{x}}" y="{{y}}" direction="all">text</movable-view>
+	</movable-area>
+
+	<movable-area style="width:500rpx;height:500rpx;">
+		<movable-view bindchange="onMovableViewChange" class="max" direction="all">text</movable-view>
+	</movable-area>
+	<view class="btn-area">
+		<button data-kind="0" bindtap="tap" class="page-body-button" type="primary">click me to move to (30px, 30px)</button>
+		<button data-kind="1" bindtap="tap" class="page-body-button" type="primary">click me to move to (0px, 0px)</button>
+	</view>
+</view>
+
+
+<!-- 片8、9 左侧删除1 自实现左滑删除效果-->
+<view class="page-section-title">左侧删除1</view>
+<view class="list_item">
+<movable-area style="width:750rpx;height:100rpx;">
+  <movable-view style="width:1050rpx;height:100rpx;" direction="horizontal" class="max">
+    <view class="left">这里是插入到组内容1</view>
+    <view class="right">
+      <view class="read">已读</view>
+      <view class="delete">删除</view>
+    </view>
+  </movable-view>
+</movable-area>
+</view>
+
+
+<!-- 2.7 （二） -->
+
+
+
+
+
+<!-- 片11，左侧删除2 miniprogram-slide-view-->
+<view class="page-section-title">左侧删除2</view>
+<slide-view class="slide" width="750" height="100" slideWidth="300">
+	<view class="left" slot="left">这里是插入到组内容2</view>
+	<view class="right" slot="right">
+		<view class="read">已读</view>
+		<view class="delete">删除</view>
+	</view>
+</slide-view>
+
+<!-- 片13 扩展声明，左侧删除3 weui ext-->
+<view class="page-section-title">左侧删除3</view>
+<view class="page__bd">
+  <view class="weui-cells">
+    <mp-slideview ext-class="slideViewClass" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+      <mp-cell value="标题文字"></mp-cell>
+    </mp-slideview>
+  </view>
+
+	<view class="weui-cells">
+<mp-slideview buttons="{{slideButtons}}" icon="{{true}}" bindbuttontap="slideButtonTap">
+  <view class="weui-slidecell">
+    左滑可以删除（图标Button）
+  </view>
+</mp-slideview>
+	</view>
+</view>
+
+<!-- other -->
+<view class="page-section">
+	<view class="page-section-title">只可以横向移动</view>
+	<movable-area>
+		<movable-view direction="horizontal">text</movable-view>
+	</movable-area>
+</view>
+
+<view class="page-section">
+	<view class="page-section-title">只可以纵向移动</view>
+	<movable-area>
+		<movable-view direction="vertical">text</movable-view>
+	</movable-area>
+</view>
+
+<view class="page-section">
+	<view class="page-section-title">可超出边界</view>
+	<movable-area>
+		<movable-view direction="all" out-of-bounds>text</movable-view>
+	</movable-area>
+</view>
+
+<view class="page-section">
+	<view class="page-section-title">带有惯性</view>
+	<movable-area>
+		<movable-view direction="all" inertia>text</movable-view>
+	</movable-area>
+</view>
+
+<view class="page-section">
+	<view class="page-section-title">可放缩</view>
+	<movable-area scale-area>
+		<movable-view direction="all" bindchange="onChange" bindscale="onScale" scale scale-min="0.5" scale-max="4" scale-value="{{scale}}">text</movable-view>
+	</movable-area>
+
+	<view class="btn-area">
+		<button data-kind="0" bindtap="tap2" class="page-body-button" type="primary">click me to scale to 3.0</button>
+		<button data-kind="1" bindtap="tap2" class="page-body-button" type="primary">click me to scale to 0</button>
+	</view>
+</view>

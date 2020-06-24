@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "region-picker-view": "/components/region-picker-view/index",
+    "region-picker-view2": "/components/region-picker-view2/index"
+  }
+}

@@ -1,0 +1,217 @@
+<!-- 2 示例 -->
+<view class="section">
+	<view class="gap">2 示例</view>
+	<view hover-class="bc_red" class="section__title">content</view>
+</view>
+
+
+<!-- 3 -->
+<view class="section">
+	<view class="gap">3 示例</view>
+	<!-- 阻止父节点出现hover状态 -->
+	<view hover-class="bc_red" class="section__title">
+		parent
+		<view hover-stop-propagation hover-class="bc_green" class="section__title">
+			child view
+		</view>
+	</view>
+</view>
+
+
+<!-- 4 事件三阶段-->
+<view class="section">
+	<view class="gap">4 示例 事件三阶段</view>
+	<!-- 阻止父节点出现hover状态 -->
+	<view id="parentView" bindtap="onTap" hover-class="bc_red" class="section__title">
+		parent
+		<view id="childView" bindtap="onTap" hover-stop-propagation hover-class="bc_green" class="section__title">
+			child view
+		</view>
+	</view>
+</view>
+
+
+<!-- 5 子组件只输出一次-->
+<view class="section">
+	<view class="gap">5 示例</view>
+	<!-- 阻止父节点出现hover状态，阻止冒泡 -->
+	<view id="parentView" bindtap="onTap" hover-class="bc_red" class="section__title">
+		parent
+		<view id="childView" catchtap="onTap" hover-stop-propagation hover-class="bc_green" class="section__title">
+			child view
+		</view>
+	</view>
+</view>
+
+
+<!-- 8 -->
+<view class="section">
+	<view class="gap">8 按钮示例</view>
+<!-- 普通按钮 -->
+<view class="section">
+	<button class="btn" type="primary">完成</button>
+</view>
+<!-- 圆形按钮 -->
+<view class="section">
+	<button hover-class="circle-btn__hover_btn">
+		<icon type="success" size="80px"></icon>
+	</button>
+</view>
+<!-- 距形按钮 -->
+<view class="section">
+	<button type="default" class="btn" plain hover-class="rect-btn__hover_btn">
+		<icon type="success_no_circle" size="26px"></icon>完成
+	</button>
+</view>
+</view>
+
+<!-- 第二部分，关于flex布局 -->
+	<view class="section__title">第二部分，关于flex布局</view>
+
+
+<!-- 4 flex-start -->
+<view class="section">
+	<view class="section__title">4 justify-content:flex-start</view>
+	<view class="flex-wrp" style="flex-direction:row;;justify-content:flex-start">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 5 flex-end -->
+<view class="section">
+	<view class="section__title">5 justify-content:flex-end</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:flex-end">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 6 center -->
+<view class="section">
+	<view class="section__title">6 justify-content:center</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:center">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 7 space-between -->
+<view class="section">
+	<view class="section__title">7 justify-content:space-between</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:space-between">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 8 space-around-->
+<view class="section">
+	<view class="section__title">8 justify-content:space-around</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:space-around">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+
+<!-- 10 -->
+<view class="section">
+	<view class="section__title">10 align-items:stretch</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:space-around;align-items:stretch;">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 11 -->
+<view class="section">
+	<view class="section__title">11 align-items:flex-start</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:space-around;align-items:flex-start;">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+
+<!-- 12 -->
+<view class="section">
+	<view class="section__title">12 align-items:end</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:space-around;align-items:flex-end;">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+
+<!-- 13 -->
+<view class="section">
+	<view class="section__title">12 align-items:center</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:space-around;align-items:center;">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 14 -->
+<view class="section">
+	<view class="section__title">14 以子元素的第一行文字对齐</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:space-around;align-items:baseline;">
+		<view class="flex-item bc_green">1</view>
+		<view style="padding-top:30px;" class="flex-item bc_red">2</view>
+		<view style="height:auto;line-height:150px;" class="flex-item bc_blue"><text>3</text></view>
+	</view>
+</view>
+
+
+<!-- 16 -->
+<view class="section">
+	<view class="section__title">元素多了，换行</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:flex-start;align-items:baseline;flex-wrap:wrap;">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 18 -->
+<view class="section">
+	<view class="section__title">18 多行侧轴的对齐方式</view>
+	<view class="flex-wrp" style="flex-direction:row;justify-content:flex-start;align-items:baseline;flex-wrap:wrap;align-content:space-between;height:300px;">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+		<view style="height:auto;" class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<!-- 21 -->
+<view class="section">
+	<view class="section__title">21flex-direction: column,align-items:center</view>
+	<view class="flex-wrp" style="height: 300px;flex-direction:column;align-items:center;">
+		<view class="flex-item bc_green">1</view>
+		<view class="flex-item bc_red">2</view>
+		<view class="flex-item bc_blue">3</view>
+	</view>
+</view>
+
+<view class="section">
+	<!-- 生成分享图，将view转绘为图片 -->
+	<button type="primary" class="intro" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!nickName}}">获取分享图头像昵称</button>
+	<button type="primary" class="intro" bindtap="createShareImage" wx:else>点我生成分享图</button>
+	<share-box isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" />
+</view>

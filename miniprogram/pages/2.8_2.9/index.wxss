@@ -1,0 +1,69 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.trans {
+  transition: .2s;
+}
+
+.page-section-spacing {
+  margin-top: 60rpx;
+}
+
+.scroll-view_H {
+  white-space: nowrap;
+}
+
+.scroll-view-item {
+  height: 300rpx;
+}
+
+.scroll-view-item_H {
+  display: inline-block;
+  width: 100%;
+  height: 300rpx;
+}
+
+.demo-text-1 {
+  background-color: green;
+}
+
+.demo-text-2 {
+  background-color: blue;
+}
+
+.demo-text-3 {
+  background-color: gray;
+}
+
+.scroll-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.scroll-item {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  background-color: gold;
+  display: block;
+}
+
+/* 长列表item */
+/* .item>view，选择.item的直接子元素view */
+.item,
+.item>view {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  width: 630rpx;
+  padding-left: 20rpx;
+}
+
+/* +加号选择器，选择紧接在.item元素后的元素，
+代表除第一个之外，后面的.item，用于实现间隔样式 */
+.item+.item {
+  border-top: 1px solid #ccc;
+}

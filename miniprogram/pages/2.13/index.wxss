@@ -1,0 +1,105 @@
+page{
+  background-color: aliceblue;
+}
+.top-banner {
+  width: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.nice-focus {
+  position: relative;
+}
+
+.nice-focus::after {
+  content: '';
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -35rpx;
+  margin-left: -35rpx;
+}
+.nice-focus image{
+  width: 56rpx;
+  height:56rpx;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1716930 */
+  src: url('//at.alicdn.com/t/font_1716930_0fs7vun2ngmn.eot');
+  src: url('//at.alicdn.com/t/font_1716930_0fs7vun2ngmn.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1716930_0fs7vun2ngmn.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1716930_0fs7vun2ngmn.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1716930_0fs7vun2ngmn.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1716930_0fs7vun2ngmn.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family: 'iconfont';
+}
+.icon-back::after{
+  content: '\e604';
+  font-size: 22px;
+}
+.icon-home::after{
+  content: '\e6f3';
+  font-size: 22px;
+}
+.left icon:last-child{
+  padding-left: 20rpx;
+}
+
+.page-navigator-bar .navigator-normal .icon-back{
+  color: white;
+}
+.page-navigator-bar .navigator-normal .icon-home{
+  color: white;
+}
+.page-navigator-bar .navigator-active .icon-back{
+  color: black;
+}
+.page-navigator-bar .navigator-active .icon-home{
+  color: black;
+}
+
+
+
+.square{
+  background-color: green;
+  padding:4rpx 20rpx;
+  color: #fff;
+  border-radius:10rpx;
+}
+
+/* 
+这个变量--topBarHeight
+是在js中动态设置中，是为了设置向上的偏移量
+目前在示例中是没有作用的，可以删除
+ */
+.operate-wraper {
+  height:calc(100vh - var(--topBarHeight));
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.operate-wraper button, .operate-wraper navigator{
+  background-color: green;
+  color: #fff;
+  flex:none;
+  width:60%;
+  margin:18rpx auto;
+  height:80rpx;
+  line-height:80rpx;
+  border-radius:20rpx;
+}
+.list-item{
+  border:2rpx solid #ccc;
+  line-height:180rpx;
+  text-align: center;
+}

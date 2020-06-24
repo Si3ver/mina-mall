@@ -1,0 +1,43 @@
+.widget {
+
+}
+
+.container {
+  width: 300px;
+  height: 200px;
+  min-height: 200px;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #ccc;
+  align-items: center;
+  padding: 60px 0 60px;
+  display: flex;
+}
+.item-box {
+  width: 80px;
+  height: 60px;
+  display: flex;
+}
+.red{
+  background-color: #ff0000
+}
+.green {
+  background-color: #00ff00
+}
+.blue{
+  background-color: #0000ff;
+  align-items: center;
+  justify-content: center;
+}
+.text{
+  width: 80px;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+}
+.img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

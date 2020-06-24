@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "mina-lazy-image": "mina-lazy-image/index"
+  }
+}

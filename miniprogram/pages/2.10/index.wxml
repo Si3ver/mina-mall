@@ -1,0 +1,120 @@
+<!-- 2.10 -->
+<view class="page">
+	<view class="page__hd">
+		<view class="page__title">2.10</view>
+		<view class="page__desc">滚动选择器：如何自定义省市区多级联动选择器？</view>
+	</view>
+	<view class="page__bd">
+		<view class="section">
+			<view class="section__title">普通选择器</view>
+			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+				<view class="picker">
+					当前选择：{{array[index]}}
+				</view>
+			</picker>
+		</view>
+
+		<view class="section">
+			<view class="section__title">多列选择器</view>
+			<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+				<view class="picker">
+					当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+				</view>
+			</picker>
+		</view>
+		<view class="section">
+			<view class="section__title">时间选择器</view>
+			<picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+				<view class="picker">
+					当前选择: {{time}}
+				</view>
+			</picker>
+		</view>
+
+		<view class="section">
+			<view class="section__title">日期选择器</view>
+			<picker mode="date" fields="month" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+				<view class="picker">
+					当前选择: {{date}}
+				</view>
+			</picker>
+		</view>
+		<view class="section">
+			<view class="section__title">省市区选择器</view>
+			<picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+				<view class="picker">
+					当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+				</view>
+			</picker>
+		</view>
+
+
+
+		<view class="page__section">
+			<view class="page__section-title">嵌入式滚动选择器picker-view</view>
+			<view>
+				<view>{{year}}年{{month}}月{{day}}日</view>
+				<picker-view bindpickstart="onPickStart" bindpickend="onPickEnd" indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+					<picker-view-column>
+						<view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
+					</picker-view-column>
+					<picker-view-column>
+						<view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+					</picker-view-column>
+					<picker-view-column>
+						<view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+					</picker-view-column>
+				</picker-view>
+			</view>
+		</view>
+
+		<!-- 2.11  -->
+
+		<!-- 单向绑定 -->
+		<view class="section">
+			<view class="section__title">普通选择器</view>
+			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+				<view class="picker">
+					当前选择：{{array[index]}}
+				</view>
+			</picker>
+		</view>
+
+		<!-- 双向绑定 -->
+
+		<view class="section">
+			<view class="section__title">双向绑定 普通选择器</view>
+
+			{{index1}}
+
+			<picker model:value="{{index1}}" range="{{array}}">
+				<view class="picker">
+					当前选择：{{array[index1]}}
+				</view>
+			</picker>
+		</view>
+
+		<!-- 自定义选择器 -->
+		<view class="page__section">
+			<view class="page__section-title">两个自定义实现选择器</view>
+			<!-- js滚动选择器 -->
+			<region-picker-view bindchange="onRegionChange"></region-picker-view>
+			<!-- wxs滚动选择器 -->
+			<region-picker-view2 bindchange="onRegionChange"></region-picker-view2>
+		</view>
+
+		<!--   
+// npm i @miniprogram-component-plus/vtabs --save
+// npm i @miniprogram-component-plus/vtabs-content --save -->
+
+		<view class="page__section">
+			<view class="page__section-title">使用vtabs</view>
+			<navigator url="/pages/vtabs/index" hover-class="navigator-hover">vtabs页面</navigator>
+		</view>
+
+	</view>
+</view>
+
+
+
+

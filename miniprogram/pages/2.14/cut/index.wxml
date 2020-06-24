@@ -1,0 +1,5 @@
+<!--miniprogram/pages/2.14/cut/index.wxml-->
+<view class="page-section">
+	<text class="page-section__title">图片裁剪</text>
+	<image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"></image-cropper>
+</view>

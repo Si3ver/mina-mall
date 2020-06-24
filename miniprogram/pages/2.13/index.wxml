@@ -1,0 +1,47 @@
+
+<!-- 自定义导航组件引入 -->
+<!-- 使用ext-class重写样式 -->
+<navigation-bar 
+  ext-class="page-navigator-bar"
+  active="{{active}}"
+  loading="{{loading}}">
+    <view class="left" slot="left">
+      <icon bindtap="goBack" class="iconfont icon-back"></icon>
+      <icon bindtap="goHome" class="iconfont icon-home"></icon>
+    </view>
+    <view slot="center">
+      <view>自定义导航标题</view>
+    </view>
+</navigation-bar>
+
+<view style="width:100%;height:400px;">
+</view>
+<image class="top-banner" src="https://qiniu-image.qtshe.com/1557133211411_684.jpg" mode="widthFix" />
+
+<!-- 自定义导航组件操作 -->
+<!-- 在这里通过绑定，嵌入了一个wxss变量 -->
+<view  class="operate-wraper" style="background-color:#f2f2f2;--topBarHeight:{{topBarHeight}}px;">
+  
+  <button bindtap="changeLoading">显示/隐藏 loading</button>
+
+  <!-- <button bindtap="changeBgTransparent">设置背景透明</button>
+  <button bindtap="changeBGColor">改变导航背景色</button>
+
+  <button bindtap="changeColor">改变标题文字</button>
+
+  <button bindtap="changeHomeImage">改变home图标</button>
+
+  <button bindtap="changeShow">显示/隐藏导航</button>
+
+
+  <button bindtap="changeBorder">显示/隐藏导航边框</button> 
+
+  <button bindtap="showLeftSlot">显示/隐藏左侧slot</button> 
+
+  <button bindtap="showCenterSlot">显示/隐藏中间slot</button>  -->
+ 
+
+</view>
+<view wx:for="[1,2,3]" style="width:100%;height:400px;background-color:#f2f2f2;text-align:center;">
+123
+</view>

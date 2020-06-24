@@ -1,0 +1,16 @@
+<view class="page-body">
+<live-player id="player" object-fit="fillCrop" min-cache="0.2" max-cache="0.8" picture-in-picture-mode="{{['pop','push']}}" style="z-index:-1;height:{{videoHeight}}px;position: fixed;width: 100%;" autoplay src="{{livePlayUrl}}" mode="live" bindstatechange="statechange" binderror="error">
+<!-- 全屏之后显示的内容，要写在live-player容器内 -->
+<button wx:if="{{showFullScreenExitButton}}" class="page-body-button"  bindtap="exitFullScreen" type="primary">退出全屏</button>
+</live-player>
+  <view class="page-section tc">
+    <view class="btn-area">
+    <button bindtap="requestFullScreen" class="page-body-button" type="primary">全屏</button>
+      <button bindtap="bindPlay" class="page-body-button" type="primary">播放</button>
+      <button bindtap="bindPause" class="page-body-button" type="primary">暂停</button>
+      <button bindtap="bindStop" class="page-body-button" type="primary">停止</button>
+      <button bindtap="bindResume" class="page-body-button" type="primary">恢复</button>
+      <button bindtap="bindMute" class="page-body-button" type="primary">静音</button>
+    </view>
+  </view>
+</view>

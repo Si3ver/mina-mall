@@ -1,0 +1,168 @@
+<view class="page-head">
+	<text class="page-head__title">slider</text>
+	<text class="page-head__desc">滑块</text>
+</view>
+
+<view wx:if="{{false}}" class="page-section">
+	<text class="page-section__title">use image</text>
+	<scroll-view class="cardbox">
+		<button
+		 wx:if="{{item.live.play_urls}}"
+		 class="card"
+		 hover-class='none'
+		 wx:for="{{content}}"
+     wx:key="*this"
+		 bindtap="gotoLive"
+		 data-url="{{item.live.play_urls.hdl.ORIGIN}}"
+		 data-ava="{{item.live.user_info.avatar}}"
+		 data-name="{{item.live.user_info.name}}"
+		 data-audience="{{item.live.audience_num}}"
+		 data-lid="{{item.live.id}}"
+		 data-cacheprepic="{{item.live.pic}}"
+		 data-prepic="{{item.live.pic_320}}"
+		 data-share_desc="{{item.live.share_info.wechat_contact.cn.text}}"
+		 style="position: relative;"
+		>
+			<view class="image_card">
+				<image class="showpic" mode="aspectFill" src="{{item.live.pic_320}}" lazy-load />
+				<view class="cover" />
+				<text class="audience">{{item.live.audience_num}}观众</text>
+			</view>
+			<view class="user_card" catchtap="gotoHome" data-uid="{{item.live.user_info.id}}">
+				<view class="avabox">
+					<image src="{{item.live.user_info.avatar}}" lazy-load class="ava" data-uid="{{item.live.user_info.id}}" />
+					<image class="vip" wx:if="{{item.live.vip}}" lazy-load="{{true}}" src="http://img08.oneniceapp.com/upload/resource/9e7ca7ece11143b49fc952cfb2520e43.png" />
+				</view>
+				<text class="user_name">{{item.live.user_info.name}}</text>
+			</view>
+		</button>
+		
+		<button
+		 wx:if="{{item.live.playback_urls}}"
+		 class="card"
+		 open-type='getUserInfo'
+		 bindtap="gotoPlayback"
+		 wx:for="{{content}}"
+		 data-url="{{item.live.playback_urls.hls.ORIGIN}}"
+		 wx:key="*this"
+		>
+			<view class="image_card">
+				<image className="showpic" mode="aspectFill" src="{{item.live.pic_320}}" lazy-load />
+				<view class="cover" />
+				<text class="audience">{{item.live.audience_num}}观众</text>
+				<image class="back" lazy-load="{{true}}" src="http://img08.oneniceapp.com/upload/resource/002bdceaa732f300e33ab8b2cb84dd17.png" />
+			</view>
+			<view class="user_card">
+				<view class="avabox">
+					<image src="{{item.live.user_info.avatar}}" class="ava" lazy-load="{{true}}" />
+					<image class="vip" wx:if="{{item.live.vip}}" lazy-load="{{true}}" src="http://img08.oneniceapp.com/upload/resource/9e7ca7ece11143b49fc952cfb2520e43.png" />
+				</view>
+				<text class="user_name">{{item.live.user_info.name}}</text>
+			</view>
+		</button>
+	</scroll-view>
+</view>
+
+<view class="page-section">
+	<text class="page-section__title">use mina-lazy-image</text>
+	<scroll-view class="cardbox">
+		<button
+		 wx:if="{{item.live.play_urls}}"
+		 class="card"
+		 hover-class='none'
+		 wx:for="{{content}}"
+     wx:key="*this"
+		 bindtap="gotoLive"
+		 data-url="{{item.live.play_urls.hdl.ORIGIN}}"
+		 data-ava="{{item.live.user_info.avatar}}"
+		 data-name="{{item.live.user_info.name}}"
+		 data-audience="{{item.live.audience_num}}"
+		 data-lid="{{item.live.id}}"
+		 data-cacheprepic="{{item.live.pic}}"
+		 data-prepic="{{item.live.pic_320}}"
+		 data-share_desc="{{item.live.share_info.wechat_contact.cn.text}}"
+		 style="position: relative;"
+		>
+			<view class="image_card">
+				<mina-lazy-image mode="aspectFill" src="{{item.live.pic_320}}" />
+				<view class="cover" />
+				<text class="audience">{{item.live.audience_num}}观众</text>
+			</view>
+			<view class="user_card" catchtap="gotoHome" data-uid="{{item.live.user_info.id}}">
+				<view class="avabox">
+					<mina-lazy-image src="{{item.live.user_info.avatar}}"  data-uid="{{item.live.user_info.id}}" />
+					<image class="vip" wx:if="{{item.live.vip}}" lazy-load="{{true}}" src="http://img08.oneniceapp.com/upload/resource/9e7ca7ece11143b49fc952cfb2520e43.png" />
+				</view>
+				<text class="user_name">{{item.live.user_info.name}}</text>
+			</view>
+		</button>
+
+		<button
+		 wx:if="{{item.live.playback_urls}}"
+		 class="card"
+		 open-type='getUserInfo'
+		 bindtap="gotoPlayback"
+		 wx:for="{{content}}"
+		 data-url="{{item.live.playback_urls.hls.ORIGIN}}"
+		 wx:key="*this"
+		>
+			<view class="image_card">
+				<mina-lazy-image mode="aspectFill" src="{{item.live.pic_320}}" />
+				<view class="cover" />
+				<text class="audience">{{item.live.audience_num}}观众</text>
+				<image class="back" lazy-load="{{true}}" src="http://img08.oneniceapp.com/upload/resource/002bdceaa732f300e33ab8b2cb84dd17.png" />
+			</view>
+			<view class="user_card">
+				<view class="avabox">
+					<mina-lazy-image src="{{item.live.user_info.avatar}}"  />
+					<image class="vip" wx:if="{{item.live.vip}}" lazy-load="{{true}}" src="http://img08.oneniceapp.com/upload/resource/9e7ca7ece11143b49fc952cfb2520e43.png" />
+				</view>
+				<text class="user_name">{{item.live.user_info.name}}</text>
+			</view>
+		</button>
+	</scroll-view>
+</view>
+
+
+<view class="page-section">
+	<text class="page-section__title">设置step</text>
+	<image bindtap="previewImage" data-url="{{qrcode}}" show-menu-by-longpress src="{{qrcode}}" mode="aspectFit"></image>
+</view>
+
+
+<view class="page-section">
+	<text class="page-section__title">IntersectionObserver示例</text>
+<view class="message">
+      <text wx:if="{{appear}}">
+        小球出现
+      </text>
+      <text wx:else>
+        小球消失
+      </text>
+    </view>
+      <scroll-view class="scroll-view" scroll-y>
+        <view class="scroll-area" style="{{appear ? 'background: #ccc' : ''}}">
+          <text class="notice">向下滚动让小球出现</text>
+          <view class="filling"></view>
+          <view class="ball"></view>
+        </view>
+      </scroll-view>
+
+		</view>
+
+
+		<view class="page-section">
+	<text class="page-section__title">三种mode</text>
+		<text class="page-section__title">scaleToFill</text>
+	<image style="width:300px;height:300px;" mode="scaleToFill" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
+		<text class="page-section__title">aspectFit</text>
+		<image style="width:300px;height:300px;background-color:#b2b2b2;" mode="aspectFit" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
+			<text class="page-section__title">aspectFill</text>
+			<image style="width:300px;height:300px;" mode="aspectFill" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
+</view>
+
+<!-- 背景图 -->
+<view class="container">
+</view>
+
+

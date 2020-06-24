@@ -1,0 +1,2 @@
+<!--miniprogram/pages/2.18/web-view/index.wxml-->
+<web-view src="{{url}}"></web-view>

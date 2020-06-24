@@ -1,0 +1,212 @@
+/* miniprogram/pages/2.14/index.wxss */
+.lazy-image{
+
+}
+
+
+/* 用户列表相关样式 */
+.main{
+	font-size:0;
+	width:100%;
+	height: 100%;
+	font-family: 'PingFangSC-Semibold';
+}
+.title{
+	text-align:center;
+	font-size: 0;
+}
+.u_title{
+	display: inline-block;
+	width:100%;
+	font-size: 24rpx;
+	line-height: 24rpx;
+	margin:20rpx 0;
+	font-weight: bold;
+}
+.d_title{
+	display: inline-block;
+	width:100%;
+	line-height: 22rpx;
+	font-size: 22rpx;
+}
+.cardbox{
+	width: 100%;
+	font-size: 0;
+	box-sizing: border-box;
+	padding: 0 32rpx;
+	/*margin-top:60rpx;*/
+	display: inline-block;
+}
+button::after{
+	border: none
+}
+button{
+  width: auto !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	background-color: #fff;
+}
+.card{
+	display: inline-block;
+	float:left;
+	/* margin-top:60rpx; */
+}
+.card .image_card{
+	width: 268rpx;
+	height: 268rpx;
+	border-radius: 8rpx;
+	position: relative;
+}
+.cover{
+	position: absolute;
+	/* width: 327rpx;
+	height: 327rpx; */
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.3);
+	z-index: 99;
+	border-radius: 8rpx;
+}
+.card .image_card .audience{
+	font-size: 22rpx;
+	color:#fff;
+	position: absolute;
+	left:16rpx;
+	top:16rpx;
+	z-index:999; 
+	font-weight: bold;
+}
+.card .image_card .back{
+	position: absolute;
+	right:16rpx;
+	top:16rpx;
+	width: 56rpx;
+	height: 32rpx;
+	z-index: 999;
+}
+.card .user_card{
+	margin-top: 20rpx;
+	margin-bottom: 20rpx;
+	float:left;
+	margin-right: 15rpx;
+}
+.card .user_card .avabox{
+	width:48rpx;
+	height: 48rpx;
+	margin-right: 15rpx;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+.card .user_card .avabox .ava{
+	width: 100%;
+	height: 100%;
+	border-radius: 8rpx;
+	vertical-align: top
+}
+.card .user_card .avabox .vip{
+	position: absolute;
+	width: 32rpx;
+	height: 32rpx;
+	bottom:-5rpx;
+	right:-5rpx;
+	border-radius: 50%;
+	background: red;
+}
+.card .user_name {
+	width: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	font-size: 24rpx;
+	text-align: start;
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: bold;
+}
+.card:nth-child(odd){
+	margin-right:32rpx;
+}
+.showpic{
+	width: 100%;
+	height: 100%;
+	border-radius: 8rpx;
+	overflow: hidden;
+}
+.scroll-end{
+	float: left;
+	height: 50rpx;
+	width: 100%;
+	color: #999;
+	line-height: 50rpx;
+	font-size: 28rpx;
+	text-align: center;
+}
+
+
+/* IntersectionObserver示例 */
+.scroll-view {
+  height: 400rpx;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.scroll-area {
+  height: 1300rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: .5s;
+}
+
+.notice {
+  margin-top: 150rpx;
+}
+
+.ball {
+  width: 200rpx;
+  height: 200rpx;
+  background: #1AAD19;
+  border-radius: 50%;
+}
+
+.filling {
+  height: 400rpx;
+}
+
+.message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.message text {
+  font-size: 40rpx;
+  font-family: -apple-system-font, Helvetica Neue,Helvetica,sans-serif;
+}
+
+/* 背景图样式 */
+.container {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color:azure;
+	top: 0;                        
+  bottom: 0;                     
+  left: 0;                       
+	right: 0;    
+	z-index: -1;          
+}
+.container::after {              
+  content: "";                   
+  background: url(https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg) no-repeat center center;                         
+  background-size: cover;        
+  opacity: 0.5;                  
+  top: 0;                        
+  bottom: 0;                     
+  left: 0;                       
+  right: 0;                      
+  position: absolute;            
+}
