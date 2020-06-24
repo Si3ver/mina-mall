@@ -6,6 +6,8 @@
     "pages/2.1/parser/parser",
     "pages/2.1/progress/index",
     "pages/2.1/circle-progress/index",
+    "pages/2.2/view/index",
+    "pages/2.3/scroll-view/index",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",

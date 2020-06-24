@@ -1,0 +1,85 @@
+<wxs module="refresh">
+	var pullingMessage = "下拉刷新"
+
+	module.exports = {
+onRefresh: function(e, instance) {
+	// 此时手拉开了，进入了加载中的状态
+	pullingMessage = "更新中"
+	console.log(pullingMessage)
+	instance.callMethod("setData", {
+		pullingMessage: pullingMessage,
+		refresherTriggered: true
+	})
+	instance.callMethod("willCompleteRefresh", {})
+},
+		onAbort: function(e, instance) {
+			// 异常状态，例如被事件突然打断，事件包括电话等，被迫松手了
+			pullingMessage = "下拉刷新"
+			console.log(pullingMessage)
+		},
+		onRestore: function(e, instance) {
+			// 回去了，松手了，恢复原位了，不刷了
+			pullingMessage = "下拉刷新"
+			console.log(pullingMessage)
+		},
+		onPulling: function(e, instance) {
+			// 80的高度，因为refresher-threshold设置的是80，手指按住往下拉的状态
+			var p = Math.min(e.detail.dy / 80, 1)
+			// console.log(p)
+			// 这里在视图层，不怕频繁操作DOM
+			var icon = instance.selectComponent('#refresherIcon')
+			icon.setStyle({
+				opacity: p,
+				transform: "rotate(" + (90 + p * 180) + "deg)"
+			})
+			var view = instance.selectComponent('.refresh-container')
+			view.setStyle({
+				opacity: p,
+				transform: "scale(" + p + ")"
+			})
+			if (e.detail.dy >= 80) {
+				if (pullingMessage == "下拉刷新") {
+					pullingMessage = "释放更新"
+					instance.callMethod("setData", {
+						pullingMessage
+					})
+				}
+			}
+		}
+	}
+</wxs>
+
+<button bindtap="plusScrollUpValue">向上滚动</button>
+<button bindtap="scrollToView1">滚动到子视图</button>
+<button bindtap="unshiftOnePic">顶部添加一张图</button>
+自定义交互动画：
+<scroll-view scroll-y style="width: 100%; height: 400px;overflow-anchor:auto;" bindscroll="onScroll" bindscrolltoupper="onScrolltoupper" scroll-top="{{scrollTopValue}}" scroll-into-view="{{scrollIntoViewId}}" scroll-with-animation enable-back-to-top enable-flex scroll-anchoring refresher-enabled refresher-threshold="{{80}}" refresher-default-style="none" refresher-background="#FFF" bindrefresherpulling="{{refresh.onPulling}}" bindrefresherrefresh="{{refresh.onRefresh}}" bindrefresherrestore="{{refresh.onRestore}}" bindrefresherabort="{{refresh.onAbort}}" refresher-triggered="{{refresherTriggered}}">
+	<view slot="refresher" class="refresh-container" style="display: block; width: 100%; height: 80px; background: #F8f8f8; display: flex; align-items: center;">
+		<view class="view1" style="position: absolute; text-align: center; width: 100%;display:flex;align-items:center;justify-content:center;color:#888;">
+			<mp-icon id="refresherIcon" icon="arrow" color="#888" size="{{20}}" style="margin-right:5px;transform:rotate(90deg)"></mp-icon>
+			<text style="min-width:80px;text-align:left;">{{pullingMessage}}</text>
+		</view>
+	</view>
+
+
+	<view wx:for="{{arr}}" id="view{{item+1}}" style="display: flex;height: 100px;">
+		<text style="position:relative;top:5px;left:5px;color:black;">{{item+1}}</text>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+	</view>
+</scroll-view>
+
+默认交互动画：
+<scroll-view scroll-y style="width: 100%; height: 400px;" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="white" refresher-background="lightgreen" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort">
+<textarea>textarea,已支持嵌套textarea、map、canvas、video 组件</textarea>
+	<view wx:for="{{arr}}" style="display: flex; height: 100px;">
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+		<image src="https://cdn.nlark.com/yuque/0/2020/jpeg/1252071/1586359160786-8d5b7738-3ad3-43e7-bf0a-738c58365645.jpeg"></image>
+	</view>
+</scroll-view>

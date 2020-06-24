@@ -85,6 +85,18 @@
 					"pathName": "pages/2.1/circle-progress/index",
 					"query": "",
 					"scene": null
+				},{
+					"id": 7,
+					"name": "view",
+					"pathName": "pages/2.2/view/index",
+					"query": "",
+					"scene": null
+				},{
+					"id": 8,
+					"name": "scroll-view",
+					"pathName": "pages/2.3/scroll-view/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
