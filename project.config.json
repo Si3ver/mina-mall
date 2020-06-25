@@ -161,14 +161,14 @@
 				},
 				{
 					"id": 15,
-					"name": "x",
+					"name": "live-player媒体组件",
 					"pathName": "pages/2.16/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 16,
-					"name": "x",
+					"name": "webview",
 					"pathName": "pages/2.18/index",
 					"query": "",
 					"scene": null
